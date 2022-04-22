@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Login</title>
+    </head>
+<style>
+   *{
+        padding: 0;
+        margin: 0;
+        /* background-color:bisque ; */
+    }
+      form{
+      width: 20%;
+      height: auto;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  margin: 3% auto;
+  padding: 2%;
+ 
+  }
+  input{
+      display:block ;
+      margin: 15px 0;
+      font-size: 18px;
+      padding: 2%;
+      
+  }
+  #submit{
+    padding: 5px 90px 5px 90px;
+    background-color: black;
+    color: white;
+    cursor: pointer;
+    border-radius: 12px;
+  }
+</style>
+    <body>
+        <div id="login-form-div">
+            <h1 style="text-align:center">Login</h1>
+            
+                <form id="form">
+                    <label>Email</label>
+                    <input type="email" id="email" placeholder="Enter your email">
+                    <label>Password</label>
+                    <input type="password" id="password" placeholder="Enter password">
+                    <input type="submit" id="submit">
+                </form>
+                
+            
+
+        </div>
+    </body>
+<script>
+    document.querySelector('form').addEventListener('submit',loginFn)
+
+    var registeredUsers = JSON.parse(localStorage.getItem('data'))
+
+    function loginFn(){
+        event.preventDefault()
+        var Email = document.querySelector('#email').value;
+        var Password = document.querySelector('#password').value
+        
+    var flag=false;
+   console.log(registeredUsers)
+   
+    registeredUsers.forEach(function(data)
+        {
+            // console.log(usersData.email,usersData.password)
+            if(data.email == Email && data.password == Password && !flag)
+            {
+                flag=true;
+                alert("Login Successfull")
+                window.location.href="index.html";
+            }
+        })
+        if(!flag)
+        {
+            alert("Invalid Email or Password")
+            window.location.reload();
+        }
+    }
+
+       
+  
+
+</script>
+</html>

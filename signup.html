@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Signup</title>
+    </head>
+<style>
+    *{
+        padding: 0;
+        margin: 0;
+    }
+      form{
+      width: 20%;
+      height: auto;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  margin: 3% auto;
+  padding: 2%;
+  
+  }
+  input{
+      display:block ;
+      margin: 15px 0;
+      font-size: 18px;
+      padding: 2%;
+  }
+  #submit{
+    padding: 5px 90px 5px 90px;
+    background-color: black;
+    color: white;
+    cursor: pointer;
+  }
+</style>
+    <body>
+        <div id="signup-form-div">
+
+            <form>
+                <label for="">Name</label>
+               <input type="text" placeholder="Enter Your Name" id="name">
+               <label for="">Contact Number</label>
+               <input type="number" placeholder="Enter Your Number" id="number">
+               <label for="">Email</label>
+               <input type="email" placeholder="Enter Your Email" id="email">
+               <label for="">Password</label>
+                <input type="password" placeholder="Enter Your Password" id="password">
+                <input type="submit" id="submit">
+            </form>
+
+        </div>
+    </body>
+<script>
+    document.querySelector('form').addEventListener('submit',myfunction)
+      var data= JSON.parse(localStorage.getItem('data')) || []
+      document.querySelector('form').value = "";
+    function myfunction(){
+        event.preventDefault();
+        var obj = {
+             name : document.querySelector('#name').value,
+         number : document.querySelector('#number').value,
+         email : document.querySelector('#email').value,
+         password : document.querySelector('#password').value,
+        }
+  
+        if(obj.name == '' || obj.number=='' || obj.email=='' ||obj.password =='' ){
+        alert('!! Please fill required field')
+        return
+    }
+    data.push(obj)
+    localStorage.setItem('data',JSON.stringify(data))
+    alert('User Registerd')
+    window.location.href = 'login.html'
+    }
+   
+   
+   
+</script>
+</html>
